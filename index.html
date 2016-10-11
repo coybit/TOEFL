@@ -1,0 +1,61 @@
+<html>
+<head>
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+
+	$('#btnSend').click( function() {
+		
+		$('#result').text('Computing');
+
+		$.get('/compare', {url: $('#url').val() }, function(res) {
+			$('#result').text(res);
+		})
+
+	});
+});
+
+</script>
+<style type="text/css">
+
+.box {
+	    text-align: center;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 300px;
+    background-color: #f3f3f3;
+    border-radius: 4px;
+}
+
+input {
+	    height: 30px;
+    width: 250px;
+}
+
+button {
+	height: 30px;
+    color: #fff;
+    background-color: #03A9F4;
+    border: 0;
+    border-radius: 3px;
+    padding: 0 8px;
+}
+
+#result {
+	    margin: 30px;
+    font-size: 24px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+	<input id="url">
+	<button id="btnSend">Send</button>
+	<div id="result"></div>
+</div>
+
+</body>
+</html>
