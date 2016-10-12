@@ -2,14 +2,14 @@ var natural = require('natural');
 var extractor = require('unfluff');
 var request = require('request');
 var fs = require('fs');
-var words = require('./words.js').words;
+var words = require('./504words.js').words;
 var express = require('express')  
 var app = express()  
 var port = 3000
 
 /*
-	Configurating and running server
-*/
+//	Configurating and running server
+
 app.use(express.static(__dirname + '/public'));
 
 app.listen(port, function(err) {  
@@ -21,9 +21,7 @@ app.listen(port, function(err) {
 })
 
 
-/*
-	URL handlers
-*/
+//	URL handlers
 app.get('/', function(request, response)  {  
   response.sendfile('index.html')
 })
@@ -48,9 +46,31 @@ app.get('/compare', function(request, response)  {
   
 })
 
-/*
-
 */
+
+
+loadTextFrom('wikipedialist.txt', function(text) {
+
+	var lines = text.split('\n');
+
+	for( var i in lines) {
+
+		if( lines[i][0] == ';' )
+			continue;
+		
+		downloadTextFrom(lines[i], function(content,url){
+
+			var words2 = createWordsListFrom(content);
+			var res = compare( words, words2 );
+
+			console.log(res + '\t' + url + '\t' + words2.length);
+
+		});
+
+	}
+
+});
+
 function compare(words1,words2) {
 	var sameWords = words2.filter(function(item, pos) {
     	return words1.indexOf(item) != -1;
@@ -60,14 +80,14 @@ function compare(words1,words2) {
     	return words1.indexOf(item) == -1;
 	});
 
-	return '%' + (100 * sameWords.length / words2.length);
+	return (sameWords.length / words2.length);
 }
 
 function downloadTextFrom(url, callback) {
 	request(url, function(error, response, html){
         if(!error){
         	data = extractor(html);
-			callback(data.text);
+			callback(data.text,url);
         }
         else {
         	console.log(error);
@@ -102,9 +122,6 @@ function createWordsListFrom(txt) {
 	var finalWords = words.filter(function(item, pos) {
 	    return words.indexOf(item) == pos;
 	}).sort();
-
-
-	console.log('Words: ' + finalWords.length);
 
 	return finalWords;
 
