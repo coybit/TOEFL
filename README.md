@@ -11,8 +11,8 @@ https://books.google.com/books/about/400_Must_Have_Words_for_the_TOEFL.html?id=P
 <p>
 <ul>
 <li>First I extract all words from theme.</li>
-<li>Then I extract all words used in the articles that Wikipedia listed as Unusal Article (<a <li>href="https://en.wikipedia.org/wiki/Wikipedia:Unusual_articles">here</a>).</li>
-And in the last step I calculate how many percent of the words there are in these two books are used in those articles. In the word, if we learn each book, how many percent of Wikipedia Unusal Articles can be understood by we.</li>
+<li>Then I extract all words used in the articles that Wikipedia listed as Unusal Article (<a href="https://en.wikipedia.org/wiki/Wikipedia:Unusual_articles">here</a>).</li>
+<li>And in the last step I calculate how many percent of the words there are in these two books are used in those articles. In the word, if we learn each book, how many percent of Wikipedia Unusal Articles can be understood by we.</li>
 </ul>
 </p>
 
