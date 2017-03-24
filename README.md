@@ -17,6 +17,6 @@ https://books.google.com/books/about/400_Must_Have_Words_for_the_TOEFL.html?id=P
 </p>
 
 <p>
-And the results is:<br>
+And the result is:<br>
 <img src="https://docs.google.com/spreadsheets/d/1X1dJxKOr6HuJxLtvE90_a16iKjJlS928n83Qjprzlyk/pubchart?oid=1554823769&format=image"></img>
 </p>
